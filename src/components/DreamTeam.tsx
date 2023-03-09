@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {characters, friends, StarWarsContext} from "../utils/constants";
+import {characters, StarWarsContext} from "../utils/constants";
 import Friend from "./Friend";
 import styles from '../css/dremTeam.module.css'
 import styleBorder from '../css/border.module.css'

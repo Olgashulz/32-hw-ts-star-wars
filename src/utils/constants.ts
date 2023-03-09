@@ -13,7 +13,6 @@ import React from "react";
 
 export const base_url = 'https://sw-info-api.herokuapp.com';
 export const period_month = 30 * 24 * 60 * 60 * 1000;
-export const friends = ["luke", "c3po", "r2d2", "leia", "obi_wan", "chewbacca", "han_solo", "yoda", "ewok", "falcon"];
 export const navItems: NavigationItem[] = [{title:'Home', route: 'home'}, {title: 'About me', route: 'about_me'},
     {title: 'Star Wars', route: 'star_wars'}, {title: 'Contact', route: 'contact'}];
 
