@@ -78,3 +78,5 @@ export const characters:Characters = {
 export const defaultHero = Object.keys(characters)[0];
 
 export const StarWarsContext = React.createContext<HeroContext>({hero: defaultHero, setHero: (hero: string) => {}});
+
+export const friends = Object.keys(characters);

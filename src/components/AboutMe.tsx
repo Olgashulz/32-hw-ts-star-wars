@@ -1,20 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {base_url, characters, navItems, period_month, StarWarsContext} from "../utils/constants";
+import React, {useEffect, useState} from 'react';
+import {base_url, characters, period_month} from "../utils/constants";
 import {Hero} from "../utils/types";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import pathWithHero from "../hoc/pathWithHero";
 
 
 const AboutMe = () => {
     const [hero, setHero] = useState<Hero>();
     let {heroId = ''} = useParams();
-    const navigate = useNavigate();
-    const {setHero: changeHero, hero: contextHero} = useContext(StarWarsContext);
 
     useEffect(() => {
-        if (!Object.keys(characters).includes(heroId)) {
-            navigate(`/${navItems[1].route}/${contextHero}`);
-        } else {
-            changeHero(heroId);
             const hero = JSON.parse(localStorage.getItem(heroId)!);
             if (hero && ((Date.now() - hero.time) < period_month)) {
                 setHero(hero.payload);
@@ -41,7 +36,7 @@ const AboutMe = () => {
                         localStorage.setItem(heroId, JSON.stringify(info));
                     });
             }
-        }
+
     }, [heroId])
 
     return (
@@ -83,4 +78,4 @@ const AboutMe = () => {
 }
 
 
-export default AboutMe;
+export default pathWithHero(AboutMe);
