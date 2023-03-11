@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import DreamTeam from "./DreamTeam";
 import FarGalaxy from "./FarGalaxy";
 import styles from "../css/clearfix.module.css"
-import pathWithHero from "../hoc/pathWithHero";
+import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
 
 const Home = () => {
             return (
@@ -15,4 +15,4 @@ const Home = () => {
             );
 }
 
-export default pathWithHero(Home);
+export default wrapperPathWithHero(Home);

@@ -4,7 +4,7 @@ import Button from "./Button";
 import Loader from "./Loader";
 import Select from "./Select";
 import {checkExpirationDate} from "../utils/sevice"
-import pathWithHero from "../hoc/pathWithHero";
+import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
 
 interface Planet {
     name: string
@@ -61,4 +61,4 @@ const Contact = () => {
     }
 };
 
-export default pathWithHero(Contact);
+export default wrapperPathWithHero(Contact);

@@ -1,6 +1,6 @@
 import React from 'react';
 import {starWarsText} from "../utils/constants";
-import pathWithHero from "../hoc/pathWithHero";
+import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
 
 const StarWars = () => {
     return (
@@ -13,4 +13,4 @@ const StarWars = () => {
         </div>
     );
 };
-export default pathWithHero(StarWars);
+export default wrapperPathWithHero(StarWars);

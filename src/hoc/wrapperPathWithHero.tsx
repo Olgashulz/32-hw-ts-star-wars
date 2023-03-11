@@ -6,7 +6,7 @@ import {defaultHero, friends, navItems, StarWarsContext} from "../utils/constant
 interface Props{
     [key: string]: string
 }
-const pathWithHero= (WrappedComponent:React.FC) => {
+const wrapperPathWithHero= (WrappedComponent:React.FC) => {
     return (props: Props) => {
         const { heroId = '' } = useParams();
         const { setHero: changeHero } = useContext(StarWarsContext);
@@ -23,4 +23,4 @@ const pathWithHero= (WrappedComponent:React.FC) => {
     };
 };
 
-export default pathWithHero;
+export default wrapperPathWithHero;

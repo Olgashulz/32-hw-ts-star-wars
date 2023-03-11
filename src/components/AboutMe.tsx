@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {base_url, characters, period_month} from "../utils/constants";
 import {Hero} from "../utils/types";
 import {useParams} from "react-router-dom";
-import pathWithHero from "../hoc/pathWithHero";
+import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
 
 
 const AboutMe = () => {
@@ -78,4 +78,4 @@ const AboutMe = () => {
 }
 
 
-export default pathWithHero(AboutMe);
+export default wrapperPathWithHero(AboutMe);
