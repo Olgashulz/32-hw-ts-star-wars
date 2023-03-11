@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {base_url, characters, period_month} from "../utils/constants";
+import React, {useContext, useEffect, useState} from 'react';
+import {base_url, characters, defaultHero, friends, period_month, StarWarsContext} from "../utils/constants";
 import {Hero} from "../utils/types";
 import {useParams} from "react-router-dom";
 import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
@@ -8,12 +8,18 @@ import wrapperPathWithHero from "../hoc/wrapperPathWithHero";
 const AboutMe = () => {
     const [hero, setHero] = useState<Hero>();
     let {heroId = ''} = useParams();
+    const {setHero: changeHero} = useContext(StarWarsContext);
 
     useEffect(() => {
-            const hero = JSON.parse(localStorage.getItem(heroId)!);
-            if (hero && ((Date.now() - hero.time) < period_month)) {
+        const storedHero = localStorage.getItem(heroId);
+        if (storedHero) {
+            const hero = JSON.parse(storedHero);
+            if ((Date.now() - hero.time) < period_month) {
                 setHero(hero.payload);
-            } else {
+                return;
+            }
+        } else {
+            if (friends.includes(heroId)) {
                 fetch(characters[heroId].url)
                     .then(response => response.json())
                     .then(data => {
@@ -34,8 +40,11 @@ const AboutMe = () => {
                             time: Date.now()
                         }
                         localStorage.setItem(heroId, JSON.stringify(info));
-                    });
+                    })
+            } else {
+                changeHero(defaultHero);
             }
+        }
 
     }, [heroId])
 
